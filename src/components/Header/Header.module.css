@@ -1,0 +1,243 @@
+.all {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: white;
+  height: 70px;
+  text-transform: capitalize;
+  transition: none;
+  z-index: 1;
+  padding: 10px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+}
+
+.logo img {
+  padding-top: 5px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.delivery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.delivery p {
+  font-size: 10px;
+}
+
+.delivery span {
+  color: white;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 100%;
+  overflow: hidden;
+  flex: 1;
+}
+
+.search input,
+.search select {
+  padding: 10px;
+  font-weight: bold;
+  outline: 1px solid white;
+}
+
+.search select {
+  border: none;
+}
+
+.search input {
+  width: 100%;
+  border: 1px solid white;
+  margin-right: -2px;
+}
+
+.search svg {
+  padding: 7px;
+  background-color: white;
+  color: black;
+}
+
+.search svg:hover {
+  background-color: #d49644;
+}
+
+.search:focus-within {
+  border: 2px solid rgb(235, 161, 173);
+}
+
+.order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.order a {
+  text-decoration: none;
+  color: white;
+}
+
+.order p {
+  font-size: 10px;
+}
+
+.language {
+  display: flex;
+  width: 100px;
+  padding: 10px;
+}
+
+.language select {
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+}
+
+.language img {
+  width: 20%;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart span {
+  position: absolute;
+  top: -6px;
+  left: 14px;
+  font-weight: bold;
+  font-size: 20px;
+  color: orange;
+  background: #1a1a1a;
+}
+
+.lower ul {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+  background-color: black;
+  color: white;
+  text-transform: capitalize;
+}
+
+.lower ul li {
+  padding: 8px;
+}
+
+.lower ul li:first-child {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.userAccount {
+  align-items: center;
+  margin-right: 20px;
+  font-size: 17px;
+}
+
+.userAccount p {
+  font-size: 13px;
+}
+
+.signOutButton {
+  background-color: transparent;
+  border: none;
+  color: #febd69;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.signOutButton:hover {
+  text-decoration: underline;
+
+}
+
+
+.logo a:hover,
+  .delivery:hover,
+  .order a:hover,
+  .lower ul li:hover {
+    border: 1px solid white;
+    border-radius: 3px;
+  }
+
+/* Mobile-first CSS: Apply to screens below 576px */
+@media screen and (max-width: 576px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px; /* Add space below the logo */
+  }
+
+  /* Make the search bar take full width */
+  .search {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Cart and orders section stacked below the search */
+  .order {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+
+  /* Increase size of the cart icon for better touch experience */
+  .cart svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Hide the language selector for mobile */
+  .language {
+    display: none;
+  }
+
+  /* Hide additional lower header items except for the first one */
+  .lower ul li:not(:first-child) {
+    display: none;
+  }
+
+  .lower {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

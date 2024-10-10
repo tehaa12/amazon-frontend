@@ -1,0 +1,37 @@
+/* ProductList.module.css */
+
+.productListContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to the next line if more than 5 items */
+  justify-content: center; /* Center the items horizontally */
+  gap: 20px; /* Add spacing between cards */
+  padding: 20px;
+}
+
+.productListContainer > div {
+  flex: 1 1 calc(20% - 20px); /* Each card takes up 20% width minus the gap */
+  max-width: 220px; 
+  box-sizing: border-box;
+
+}
+
+@media (max-width: 1200px) {
+  /* On smaller screens, reduce to 3 cards per row */
+  .productListContainer > div {
+    flex: 1 1 calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  /* On mobile/tablets, reduce to 2 cards per row */
+  .productListContainer > div {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  /* On smaller mobile screens, show 1 card per row */
+  .productListContainer > div {
+    flex: 1 1 100%;
+  }
+}

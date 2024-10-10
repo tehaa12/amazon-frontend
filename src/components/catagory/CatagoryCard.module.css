@@ -1,0 +1,57 @@
+.catagory-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+
+.catagory-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 250px;
+}
+
+.catagory-card:hover {
+  transform: translateY(-10px);
+}
+
+.catagory-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.catagory-card h1 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.catagory-card p {
+  color: #0073e6;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-decoration: none;  /* Removed underline */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.catagory-card p:hover {
+  text-decoration: underline;  /* Adds underline on hover */
+  color: #005bb5;  /* Slightly darker color on hover */
+}
+
+
+.catagory-card a {
+  text-decoration: none;
+}
+
+.catagory-card span {
+  display: block;
+  padding: 10px;
+}
