@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ClipLoader } from "react-spinners";
 import { FiEye, FiEyeOff } from "react-icons/fi"; // Icons for password visibility toggle
 import styles from "./Auth.module.css";
-import { auth } from "../../components/Context/firebase"; // Firebase Auth
+import { auth } from "../../components/Context/Firebase"; // Firebase Auth
 
 function AuthForm() {
   const [email, setEmail] = useState("");
