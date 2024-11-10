@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../components/Context/firebase";
+import { db } from "../../components/Context/Firebase";
 import Layout from "../../Layout/Layout";
 import ProductCard from "../../components/Products/ProductCard"; // Import ProductCard
 import styles from "./Order.module.css";
