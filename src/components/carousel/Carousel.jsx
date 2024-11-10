@@ -1,8 +1,7 @@
-import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import { img } from "./images/data";
+import { img } from "./images/data"; // Assuming this is correct and the data file exists
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import classes from "../carousel/carousel.module.css";
+import classes from "../carousel/carousel.module.css"; // Ensure this path is correct
 
 function CarouselEffect() {
   return (
