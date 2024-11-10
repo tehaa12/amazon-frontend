@@ -3,7 +3,7 @@ import classes from "./Header.module.css";
 import { CiLocationOn } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { LuShoppingCart } from "react-icons/lu";
-import LowerHeader from "./lowerHeader";
+import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { useCart } from "../../components/Context/CartContext"; // Adjust the path
 import { getAuth, signOut } from "firebase/auth";
