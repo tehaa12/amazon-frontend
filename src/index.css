@@ -1,4 +1,5 @@
 *{
-    margin: 0;
-    padding: 0;
+    padding: none;
+    margin: none;
+    box-sizing: border-box;
 }

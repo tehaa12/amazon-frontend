@@ -66,7 +66,7 @@ function Header() {
             <option value="">All</option>
           </select>
           <input type="text" placeholder="Search product" name="" id="" />
-          <CiSearch size={25} />
+          <CiSearch size={38} />
         </div>
         {/* search */}
         <div className={classes.order}>

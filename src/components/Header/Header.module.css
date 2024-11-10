@@ -1,9 +1,18 @@
+/* Ensure no margin or padding in the body and main sections */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Sticky Header Setup */
 .all {
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
+/* Header Section */
 .header {
   background-color: black;
   display: flex;
@@ -15,9 +24,10 @@
   text-transform: capitalize;
   transition: none;
   z-index: 1;
-  padding: 10px;
+  padding: 10px 0; /* Reduced padding to minimize vertical spacing */
 }
 
+/* Logo Section */
 .logo {
   display: flex;
   justify-content: center;
@@ -31,6 +41,7 @@
   vertical-align: middle;
 }
 
+/* Delivery Section */
 .delivery {
   display: flex;
   align-items: center;
@@ -38,6 +49,7 @@
   gap: 3px;
   font-weight: bold;
   padding: 5px;
+  height: auto;
 }
 
 .delivery p {
@@ -48,6 +60,7 @@
   color: white;
 }
 
+/* Search Bar Styling */
 .search {
   display: flex;
   justify-content: center;
@@ -77,18 +90,22 @@
 
 .search svg {
   padding: 7px;
-  background-color: white;
   color: black;
+   background-color: #d49644;
+   font-weight: 900;
+   font-size: 30px;
+
 }
 
 .search svg:hover {
-  background-color: #d49644;
+  background-color: #e99644;
 }
 
 .search:focus-within {
   border: 2px solid rgb(235, 161, 173);
 }
 
+/* Order Section */
 .order {
   display: flex;
   justify-content: center;
@@ -105,6 +122,7 @@
   font-size: 10px;
 }
 
+/* Language Section */
 .language {
   display: flex;
   width: 100px;
@@ -121,6 +139,7 @@
   width: 20%;
 }
 
+/* Cart Section */
 .cart {
   position: relative;
 }
@@ -135,13 +154,35 @@
   background: #1a1a1a;
 }
 
+/* Lower Header Section */
+.lower {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: flex-start; /* Aligns items to the start (left) */
+  align-items: center;
+  padding: 20px;
+  height: 50px;
+}
+
 .lower ul {
   display: flex;
   gap: 5px;
   list-style: none;
-  background-color: black;
-  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+
+.lower ul {
+  display: flex;
+  align-items:start;
+  gap: 5px;
+  list-style: none;
+  margin-left: 600;  /* Remove margin from ul */
+  padding: 0; /* Remove padding from ul */
   text-transform: capitalize;
+  justify-content: start;
 }
 
 .lower ul li {
@@ -152,8 +193,11 @@
   display: flex;
   gap: 2px;
   align-items: center;
+  height:40px;
 }
 
+
+/* Account Section */
 .userAccount {
   align-items: center;
   margin-right: 20px;
@@ -176,19 +220,23 @@
 
 .signOutButton:hover {
   text-decoration: underline;
-
 }
 
-
+/* Hover Effects */
 .logo a:hover,
-  .delivery:hover,
-  .order a:hover,
-  .lower ul li:hover {
-    border: 1px solid white;
-    border-radius: 3px;
-  }
+.delivery:hover,
+.order a:hover,
+.lower ul li:hover {
+  border: 1px solid white; /* Add a border on hover */
+  border-radius: 3px; /* Rounded corners */
+}
 
-/* Mobile-first CSS: Apply to screens below 576px */
+/* Adjust hover effect to not affect layout */
+.lower ul li:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Optional background on hover */
+}
+
+/* Mobile-first CSS */
 @media screen and (max-width: 576px) {
   .header {
     display: flex;

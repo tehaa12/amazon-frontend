@@ -1,16 +1,13 @@
 import React from "react";
-import Routing from "./Router";
-import { CartProvider } from "./components/Context/CartContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { CartProvider } from "./components/Context/CartContext"; // Adjust the import path
+import Routing from "../src/Router"; // Assuming Routing contains your main routes
+import "./App.css"
 function App() {
   return (
     <CartProvider>
-      <div>
-        <Routing />
-        <ToastContainer />
-      </div>
+      <Routing />
     </CartProvider>
   );
 }
+
 export default App;
