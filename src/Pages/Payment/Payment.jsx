@@ -1,3 +1,4 @@
+// Payment.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
@@ -11,13 +12,15 @@ import {
 import axios from "axios";
 import { useCart } from "../../components/Context/CartContext"; // Use CartContext
 import styles from "./Payment.module.css";
+import { db } from "../../components/Context/Firebase"; // Ensure the path is correct
+import { collection, addDoc } from "firebase/firestore"; // Firestore functions
+import { auth } from "../../components/Context/Firebase";
+
 
 // Load Stripe with your public key from Vite environment variable
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-
-
-const PaymentForm = ({ totalAmount }) => {
+const PaymentForm = ({ totalAmount, cart }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
@@ -52,6 +55,33 @@ const PaymentForm = ({ totalAmount }) => {
 
       if (paymentIntent && paymentIntent.status === "succeeded") {
         console.log("Payment successful!", paymentIntent);
+
+        // Prepare the order data
+      const orderData = {
+        orderId: paymentIntent.id,
+
+        totalAmount: totalAmount,
+        items: cart.map((item) => ({
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image,
+        })),
+        createdAt: new Date(),
+        userId: auth.currentUser.uid, // Add the authenticated user's ID here
+      
+      };
+console.log("Current user ID:", auth.currentUser?.uid);
+
+
+        // Send order data to Firestore
+        try {
+          const docRef = await addDoc(collection(db, "orders"), orderData);
+          console.log("Order successfully saved to Firestore:", docRef.id);
+        } catch (dbError) {
+          console.error("Error saving order to Firestore:", dbError);
+        }
 
         // Clear the cart after successful payment
         dispatch({ type: "CLEAR_CART" });
@@ -161,7 +191,7 @@ function Payment() {
           <h2>Total: ${totalPrice.toFixed(2)}</h2>
           {clientSecret ? (
             <Elements stripe={stripePromise} options={options}>
-              <PaymentForm totalAmount={totalPrice} />
+              <PaymentForm totalAmount={totalPrice} cart={cart} />
             </Elements>
           ) : (
             <div className={styles["loading-message"]}>

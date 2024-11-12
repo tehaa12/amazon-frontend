@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../components/Context/Firebase";
 import Layout from "../../Layout/Layout";
-import ProductCard from "../../components/Products/ProductCard"; // Import ProductCard
+import ProductCard from "../../components/Products/ProductCard";
 import styles from "./Order.module.css";
 
 function Order() {
@@ -57,7 +57,6 @@ function Order() {
           <p>You have no orders yet.</p>
         )}
 
-        {/* Loop through orders and display each order's products */}
         {!loading &&
           !error &&
           orders.length > 0 &&
@@ -66,12 +65,11 @@ function Order() {
               <h2>Order ID: {order.id}</h2>
               <p>
                 <strong>Total Amount:</strong> $
-                {order.amount ? order.amount.toFixed(2) : "N/A"}
+                {order.totalAmount ? order.totalAmount.toFixed(2) : "N/A"}
               </p>
               <p>
-                <strong>Status:</strong> {order.status}
+                <strong>Status:</strong> {order.status || "succeeded"}
               </p>
-              {/* Optionally display order date */}
               {order.createdDate?.seconds && (
                 <p>
                   <strong>Order Date:</strong>{" "}
@@ -80,16 +78,18 @@ function Order() {
                   ).toLocaleDateString()}
                 </p>
               )}
-
               <div className={styles["order-products"]}>
-                {Array.isArray(order.items) &&
+                {Array.isArray(order.items) && order.items.length > 0 ? (
                   order.items.map((item) => (
                     <ProductCard
                       key={item.id}
                       product={item}
-                      showAddToCartButton={false} // Hide "Add to Cart" button
+                      showAddToCartButton={false}
                     />
-                  ))}
+                  ))
+                ) : (
+                  <p>No products in this order.</p>
+                )}
               </div>
               <hr className={styles["order-hr"]} />
             </div>

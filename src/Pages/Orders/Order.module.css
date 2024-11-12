@@ -1,5 +1,8 @@
+/* General Styles */
+
 .order-container {
   padding: 20px;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
 h1 {
@@ -47,4 +50,49 @@ h1 {
 .order-hr {
   margin: 20px 0;
   border: 1px solid #ddd;
+}
+
+/* Mobile (up to 560px) */
+@media (max-width: 560px) {
+  .order-container {
+    padding: 15px;
+  }
+
+  .order-products {
+    grid-template-columns: 1fr; /* 1 column for smaller screens */
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .order h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet (up to 760px) */
+@media (max-width: 760px) {
+  .order-container {
+    padding: 18px;
+  }
+
+  .order-products {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Laptop and above (up to 1024px) */
+@media (max-width: 1024px) {
+  .order-container {
+    padding: 20px;
+  }
+
+  .order-products {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  }
 }

@@ -3,12 +3,11 @@ import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrentFormat/CurrentFormat";
 import styles from "./Product.module.css";
 import { Link } from "react-router-dom";
-import { useCart } from "../Context/CartContext"; // Adjust the path as necessary
+import { useCart } from "../Context/CartContext";
 
 function ProductCard({ product, showAddToCartButton = true }) {
-  // Add the prop here
   const { dispatch } = useCart();
-  const { image, rating, price, id, title } = product;
+  const { image, rating = {}, price, id, title } = product;
 
   const handleAddToCart = () => {
     dispatch({ type: "ADD_TO_CART", payload: product });
@@ -21,10 +20,16 @@ function ProductCard({ product, showAddToCartButton = true }) {
       </Link>
       <div>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.rating}>
-          <Rating value={rating.rate} precision={0.1} readOnly />
-          <small>{rating.count} reviews</small>
-        </div>
+
+        {/* Show Rating only if the product has a rating */}
+        {rating?.rate > 0 && (
+          <div className={styles.rating}>
+            <Rating value={rating.rate || 0} precision={0.1} readOnly />
+            <small>{rating.count || 0} reviews</small>
+          </div>
+        )}
+
+        {/* Price */}
         <div className={styles.price}>
           <CurrencyFormat
             amount={price}
@@ -35,7 +40,7 @@ function ProductCard({ product, showAddToCartButton = true }) {
           />
         </div>
 
-        {/* Only show the "Add to Cart" button if the prop is true */}
+        {/* Add to Cart button */}
         {showAddToCartButton && (
           <button className={styles.button} onClick={handleAddToCart}>
             Add to Cart

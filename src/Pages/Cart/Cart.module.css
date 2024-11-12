@@ -102,3 +102,19 @@
 .increment:hover,.decrement:hover{
   background-color: #f0c14b;
 }
+@media (max-width: 430px) {
+  .cart-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+}
+@media (max-width: 360px) {
+  .cart-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+
