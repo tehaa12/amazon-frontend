@@ -1,7 +1,6 @@
 /* ProductList.module.css */
 .productListContainer {
   display: flex;
-  /* background: #000; */
   flex-wrap: wrap; /* Ensures items wrap to the next line */
   justify-content: space-between; /* Space between items */
   padding: 20px;
