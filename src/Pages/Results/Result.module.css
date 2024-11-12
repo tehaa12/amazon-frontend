@@ -5,14 +5,17 @@
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-/* The product grid - 5 columns */
+/* The product grid - starting with 5 columns on larger screens */
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  grid-template-columns: repeat(5, 1fr); /* 5 columns on large screens */
   gap: 20px; /* Space between cards */
   margin-top: 30px;
+  width: 100%; /* Ensures full width usage */
+  box-sizing: border-box; /* Prevents width overflow from padding */
 }
 
 /* Styling for each product card */
@@ -74,4 +77,34 @@ hr {
   margin: 20px 0;
   border: 0;
   border-top: 1px solid #ccc;
+}
+
+/* Media queries for responsive layout */
+
+/* On large tablets and laptops, reduce to 3 columns */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* On tablets, reduce to 2 columns */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* On mobile devices, reduce to 1 column */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensuring no extra space appears */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrolling on body */
 }
