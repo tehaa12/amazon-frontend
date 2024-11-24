@@ -1,36 +1,36 @@
-/* ProductList.module.css */
 .productListContainer {
   display: flex;
   flex-wrap: wrap; /* Ensures items wrap to the next line */
-  justify-content: space-between; /* Space between items */
+  justify-content: center; /* Center the items horizontally */
   padding: 20px;
   gap: 20px; /* Space between cards */
   box-sizing: border-box;
 }
 
 .productListContainer > div {
-  width: calc(20% - 20px); /* Each product takes up 20% width */
+  width: calc(25% - 20px); /* Default: Each product takes up 25% width (4 items per row) */
   max-width: 220px;
   box-sizing: border-box;
 }
 
+/* For screens smaller than 1200px */
 @media (max-width: 1200px) {
-  /* On smaller screens, reduce to 3 products per row */
   .productListContainer > div {
-    width: calc(33.33% - 20px);
+    width: calc(33.33% - 20px); /* 3 products per row */
   }
 }
 
+/* For screens smaller than 768px (tablets, smaller laptops) */
 @media (max-width: 768px) {
-  /* On mobile/tablets, reduce to 2 products per row */
   .productListContainer > div {
-    width: calc(50% - 20px);
+    width: calc(50% - 20px); /* 2 products per row */
   }
 }
 
+/* For mobile devices */
 @media (max-width: 480px) {
-  /* On smaller mobile screens, show 1 product per row */
   .productListContainer > div {
-    width: 100%; /* Full width per item on very small screens */
+    width: 100%; /* 1 product per row on very small screens */
+    max-width: none; /* Remove max-width limit */
   }
 }
